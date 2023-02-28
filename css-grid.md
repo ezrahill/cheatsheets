@@ -1,7 +1,7 @@
 ---
 title: CSS Grid
 category: CSS
-updated: 2018-12-06
+updated: 2019-08-23
 layout: 2017/sheet
 prism_languages: [css]
 ---
@@ -17,7 +17,6 @@ prism_languages: [css]
   /* Display properties */
   display: grid;
   display: inline-grid;
-  display: subgrid;
 ```
 
 ```css
@@ -26,8 +25,10 @@ prism_languages: [css]
   grid-template-columns: 25% 50% 25%; /* Percentage units */
   grid-template-columns: 1rem auto 1rem 2fr; /* Fill remaining widths with auto or fr units */
   grid-template-columns: repeat(12, 1fr); /* Repeat columns without needing to write them */
+  grid-template-columns: subgrid; /* Use column tracks defined on parent grid */
   
   grid-template-rows: 1rem 10% auto repeat(5, 10px); /* Mix any group, same rules work for rows */
+  grid-template-rows: subgrid; /* Use row tracks defined on parent grid */
 ```
 
 ```css
@@ -39,7 +40,7 @@ prism_languages: [css]
 
 ```css
   /* Areas */
-  grid-tamplate-areas:
+  grid-template-areas:
     "header header"
     "main aside"
     "footer footer"; /* Grid-style */
@@ -58,7 +59,7 @@ prism_languages: [css]
   /* The above is the same as below long-hand */
   grid-template-columns: 80% 20%;
   grid-template-rows: auto 100vh 10rem;
-  grid-tamplate-areas:
+  grid-template-areas:
     "header header"
     "main aside"
     "footer footer";
@@ -155,7 +156,7 @@ prism_languages: [css]
     / 80% 20%; /* Which is again equivalent to below */
   grid-template-columns: 80% 20%;
   grid-template-rows: auto 100vh 10rem;
-  grid-tamplate-areas:
+  grid-template-areas:
     "header header"
     "main aside"
     "footer footer";

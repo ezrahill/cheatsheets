@@ -9,6 +9,7 @@ layout: 2017/sheet
 ```
 aws ec2 describe-instances
 aws ec2 start-instances --instance-ids i-12345678c
+aws ec2 terminate-instances --instance-ids i-12345678c
 ```
 
 ### S3
@@ -37,6 +38,13 @@ brew install awscli
 aws configure
 ```
 
+### Configuration profiles
+
+```
+aws configure --profile project1
+aws configure --profile project2
+```
+
 ## Elastic Beanstalk
 
 ### Configuration
@@ -48,15 +56,15 @@ aws configure
 eb config
 ```
 
-See: <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html>
+See: <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html>
 
 ## ebextensions
 
-* <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customize-containers.html>
-* <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customize-containers-ec2.html>
+* <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customize-containers.html>
+* <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customize-containers-ec2.html>
 
 ## Also see
 
 * [AWS CLI](https://aws.amazon.com/cli/)
-* [Documentation](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
-* [All commands](http://docs.aws.amazon.com/cli/latest/reference/#available-services)
+* [Documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
+* [All commands](https://docs.aws.amazon.com/cli/latest/reference/#available-services)

@@ -3,7 +3,7 @@ title: Capybara
 category: Ruby libraries
 layout: 2017/sheet
 weight: -5
-updated: 2017-08-30
+updated: 2020-06-13
 tags: [Featurable]
 ---
 
@@ -13,9 +13,11 @@ tags: [Featurable]
 
 ### Clicking links and buttons
 
-    click 'Link Text'
-    click_button
-    click_link
+```ruby
+click_on 'Link Text'
+click_button
+click_link
+```
 
 ### Interacting with forms
 
@@ -136,6 +138,7 @@ expect(page).to \
 {: .-setup}
 
 ```ruby
+  have_current_path(expected_path)
   have_selector '.blank-state'
   have_selector 'h1#hola', text: 'Welcome'
   have_button 'Save'
@@ -217,7 +220,7 @@ find('#x').fill_in('Street', with: 'Hello')
 ### Scripting
 
 ```ruby
-execute_script('$("input").trigger('change')')
+execute_script('$("input").trigger("change")')
 evaluate_script('window.ga')
 ```
 
@@ -264,7 +267,7 @@ page.status_code == 200
 page.response_headers
 ```
 
-See: <http://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Session>
+See: <https://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Session>
 
 ### Poltergeist
 
@@ -331,5 +334,5 @@ page.set_rack_session(foo: 'bar')
 ## See also
 {: .-one-column}
 
-- <http://rubydoc.info/github/jnicklas/capybara/Capybara/RSpecMatchers>
-- <http://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Node/Matchers>
+- <https://rubydoc.info/github/jnicklas/capybara/Capybara/RSpecMatchers>
+- <https://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Node/Matchers>

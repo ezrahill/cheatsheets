@@ -4,7 +4,7 @@ category: Devops
 layout: 2017/sheet
 prism_languages: [yaml]
 weight: -1
-updated: 2018-06-26
+updated: 2020-01-01
 ---
 
 ### Basic example
@@ -15,10 +15,10 @@ version: '2'
 
 services:
   web:
-    build: .
+    build:
     # build from Dockerfile
-    context: ./Path
-    dockerfile: Dockerfile
+      context: ./Path
+      dockerfile: Dockerfile
     ports:
      - "5000:5000"
     volumes:
@@ -54,6 +54,8 @@ docker-compose down
 web:
   # build from Dockerfile
   build: .
+  args:     # Add build arguments
+    APP_HOME: app
 ```
 
 ```yaml
@@ -77,7 +79,7 @@ web:
 ```yaml
   ports:
     - "3000"
-    - "8000:80"  # guest:host
+    - "8000:80"  # host:container
 ```
 
 ```yaml
@@ -131,6 +133,16 @@ web:
     - db
 ```
 
+```yaml
+  # make sure `db` is healty before starting
+  # and db-init completed without failure
+  depends_on:
+    db:
+      condition: service_healthy
+    db-init:
+      condition: service_completed_successfully
+```
+
 ### Other options
 
 ```yaml
@@ -144,6 +156,12 @@ web:
   volumes:
     - /var/lib/mysql
     - ./_data:/var/lib/mysql
+```
+
+```yaml
+  # automatically restart container
+  restart: unless-stopped
+  # always, on-failure, no (default)
 ```
 
 ## Advanced features
@@ -188,6 +206,18 @@ services:
       - project_db_1:mysql
 ```
 
+### Healthcheck
+
+```yaml
+    # declare service healthy when `test` command succeed
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+```
+
 ### Hosts
 
 ```yaml
@@ -213,4 +243,30 @@ networks:
   default:
     external:
       name: frontend
+```
+
+### Volume
+
+```yaml
+# mount host paths or named volumes, specified as sub-options to a service
+  db:
+    image: postgres:latest
+    volumes:
+      - "/var/run/postgres/postgres.sock:/var/run/postgres/postgres.sock"
+      - "dbdata:/var/lib/postgresql/data"
+
+volumes:
+  dbdata:
+```
+
+### User
+
+```yaml
+# specifying user
+user: root
+```
+
+```yaml
+# specifying both user and group with ids
+user: 0:0
 ```

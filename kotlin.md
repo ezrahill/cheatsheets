@@ -26,6 +26,7 @@ val inferredString = "Adam"
 val name = "Adam"
 val greeting = "Hello, " + name
 val greetingTemplate = "Hello, $name"
+val interpolated = "Hello, ${name.toUpperCase()}"
 ```
 
 ### Numbers
@@ -168,6 +169,7 @@ val containsNoEvens = numList.none { it % 2 == 0 }
 val containsNoEvens = numList.all { it % 2 == 1 }
 val firstEvenNumber: Int = numList.first { it % 2 == 0 }
 val firstEvenOrNull: Int? = numList.firstOrNull { it % 2 == 0 }
+val fullMenu = objList.map { "${it.name} - $${it.detail}" }
 ```
 
 Note: `it` is the [implicit name for a single parameter](https://kotlinlang.org/docs/reference/lambdas.html#it-implicit-name-of-a-single-parameter).
